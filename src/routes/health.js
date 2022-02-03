@@ -1,3 +1,18 @@
+/**
+ * @swagger
+ * /health:
+ *   get:
+ *     summary: Get health status
+ *     tags: [Status]
+ *     produces:
+ *       - application/json
+ *     responses:
+ *       200:
+ *         description: API Health status
+ *         schema:
+ *           type: object
+ */
+
 import Router from 'koa-router'
 const pkg = require('../../package.json')
 
