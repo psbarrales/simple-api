@@ -1,4 +1,4 @@
-# Simple - UI
+# Simple - API
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 ![Estado en GitHub Action](https://github.com/psbarrales/simple-api/actions/workflows/api.yml/badge.svg)
 
