@@ -1,4 +1,4 @@
-import core from './core'
+import core from 'core'
 
 process.setMaxListeners(0)
 core.init()

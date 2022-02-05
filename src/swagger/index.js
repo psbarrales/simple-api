@@ -48,3 +48,5 @@ async function options() {
 export default async () => {
   return openapiJSDoc(await options())
 }
+
+export { options as __options }
