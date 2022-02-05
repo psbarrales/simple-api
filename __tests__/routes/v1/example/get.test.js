@@ -15,3 +15,12 @@ test('routes: v1/example/get should action add ctx.body === "OK"', () => {
   __action(ctx)
   expect(ctx.body).toEqual('OK')
 })
+
+test('routes: v1/example/get should throw error', async () => {
+  try {
+    await __action()
+    expect(true).toBeFalsy()
+  } catch (err) {
+    expect(err).toBeDefined()
+  }
+})

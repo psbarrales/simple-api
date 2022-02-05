@@ -13,6 +13,24 @@ test('query: filterQuery: return where from ctx.query.filter', () => {
     },
   }
   expect(filterQuery(ctx)).toMatchObject({ brand: 'testing' })
+
+  ctx = {
+    query: {
+      filter: {
+        where: { brand: 'testing' },
+      },
+    },
+  }
+  expect(filterQuery(ctx)).toMatchObject({ brand: 'testing' })
+
+  ctx = {
+    query: {
+      filter: JSON.stringify({
+        where: { id: 'testing' },
+      }),
+    },
+  }
+  expect(filterQuery(ctx)).toMatchObject({ _id: 'testing' })
 })
 
 test('query: fieldsQuery está definido', () => {

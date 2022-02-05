@@ -19,7 +19,9 @@ function use() {
               stack: err.stack,
               originalError: err,
             }
-          } else if (err.expose) { ctx.body = { error: err.message, originalError: err } } else ctx.body = { error: http.STATUS_CODES[ctx.status] }
+          } else if (err.expose) {
+            ctx.body = { error: err.message, originalError: err }
+          } else ctx.body = { error: http.STATUS_CODES[ctx.status] }
           break
         case 'html':
         default:
