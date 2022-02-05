@@ -4,6 +4,17 @@ test('query: filterQuery está definido', () => {
   expect(filterQuery).toBeDefined()
 })
 
+test('query: filterQuery: return where from ctx.query.filter', () => {
+  let ctx = {
+    query: {
+      filter: JSON.stringify({
+        where: { brand: 'testing' },
+      }),
+    },
+  }
+  expect(filterQuery(ctx)).toMatchObject({ brand: 'testing' })
+})
+
 test('query: fieldsQuery está definido', () => {
   expect(fieldsQuery).toBeDefined()
 })
