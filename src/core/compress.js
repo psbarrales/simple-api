@@ -3,9 +3,7 @@ import compress from 'koa-compress'
 function use() {
   console.debug('[core] requiring Compress')
   return compress({
-    filter(contentType) {
-      return /text/i.test(contentType)
-    },
+    filter,
     threshold: 2048,
     gzip: {
       flush: require('zlib').constants.Z_SYNC_FLUSH,
@@ -17,6 +15,13 @@ function use() {
   })
 }
 
+function filter(contentType) {
+  return /text/i.test(contentType)
+}
+
 export default {
   use,
 }
+
+// For testing purpose
+export { filter as __filter }
