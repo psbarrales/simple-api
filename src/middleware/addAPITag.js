@@ -1,6 +1,5 @@
 async function addAPITag(ctx, next) {
-  ctx.tag = true
-  ctx.set('X-Tag', 'Tag Ready')
+  ctx.set('X-Api-Name', 'Simple API')
   next()
 }
 
