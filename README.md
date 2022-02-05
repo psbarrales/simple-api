@@ -7,16 +7,16 @@
 
 Simple API on Koa.JS
 ## Prerequisites
-```
+```bash
 node
 docker
 ```
 
 ## 3rd party libraries
-* [Koa](https://koajs.com/)
+*  [Koa](https://koajs.com/)
 
 ## Folder Structure
-
+```txt
     src/
     ├── core               # core build with Koa.JS and 3rd party middleware
     ├── middleware         # custom middleware
@@ -25,6 +25,7 @@ docker
     ├── utils              # Utility functions
     ├── views              # Nunjunks template folders
     └── README.md
+```
 
 ## Server Running
 ```
@@ -73,18 +74,15 @@ export default {
 Generate a route `GET` http://localhost:3000/products/
 
 ## Status endpoints
-`/health`: Get node metrics for prometheus tools
-
-`/metrics`: Get node metrics for prometheus tools
-
-`/up`: Return UP text
-
-`/ping`: Return PONG text
+*  `/health`: Get node metrics for prometheus tools
+*  `/metrics`: Get node metrics for prometheus tools
+*  `/up`: Return UP text
+*  `/ping`: Return PONG text
 
 ## Testing
 ### Linter
-* `npm run lint`
-* `npm run lint:fix`
+*  `npm run lint`
+*  `npm run lint:fix`
 ### Jest
-* `npm run test`
-* `npm run test:coverage`
+*  `npm run test`
+*  `npm run test:coverage`
