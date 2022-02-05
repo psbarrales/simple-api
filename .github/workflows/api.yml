@@ -1,4 +1,4 @@
-name: API
+name: API Test
 
 on:
   push:
@@ -19,4 +19,5 @@ jobs:
         cache: 'yarn'
     - run: yarn
     - run: yarn lint
-    - run: yarn test
+    - run: yarn test:coverage
+    - run: yarn codacy:send --token ${{ secrets.CODACY_PROJECT_TOKEN }}

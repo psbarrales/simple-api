@@ -12,6 +12,7 @@
     "lint:fix": "eslint --fix ./src",
     "test": "jest --passWithNoTests",
     "test:coverage": "jest --coverage --passWithNoTests",
+    "codacy:send": "cat ./coverage/lcov.info | codacy-coverage",
     "prepare": "husky install",
     "postinstall": "husky install"
   },
@@ -50,6 +51,7 @@
     "@commitlint/cli": "^16.1.0",
     "@commitlint/config-conventional": "^16.0.0",
     "babel-jest": "^27.4.6",
+    "codacy-coverage": "^3.4.0",
     "eslint": "^7.27.0",
     "eslint-config-standard": "^16.0.2",
     "eslint-plugin-import": "^2.23.3",

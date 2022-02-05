@@ -1,6 +1,8 @@
 # Simple - API
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 ![Estado en GitHub Action](https://github.com/psbarrales/simple-api/actions/workflows/api.yml/badge.svg)
+[![Codacy Badge](https://app.codacy.com/project/badge/Grade/73b528de5fc2482d88d1e1bfc5dd6af4)](https://www.codacy.com/gh/psbarrales/simple-api/dashboard?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=psbarrales/simple-api&amp;utm_campaign=Badge_Grade)
+[![Codacy Badge](https://app.codacy.com/project/badge/Coverage/73b528de5fc2482d88d1e1bfc5dd6af4)](https://www.codacy.com/gh/psbarrales/simple-api/dashboard?utm_source=github.com&utm_medium=referral&utm_content=psbarrales/simple-api&utm_campaign=Badge_Coverage)
 
 Simple API on Koa.JS
 ## Prerequisites
