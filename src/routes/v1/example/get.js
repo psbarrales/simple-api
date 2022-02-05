@@ -28,3 +28,5 @@ export default {
   route: '/find',
   handlers: [addAPITag, action],
 }
+
+export { action as __action }

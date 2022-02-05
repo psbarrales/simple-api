@@ -17,8 +17,15 @@ import Router from 'koa-router'
 const pkg = require('../../package.json')
 
 const setResponseBody = (ctx, body) => {
-  return (ctx.body = body)
+  ctx.body = body
 }
+
+const healthAction = (body, initialDate) => async (ctx) => {
+  body.uptime = (Date.now() - initialDate) / 1000
+  setResponseBody(ctx, body)
+}
+
+const stringAction = (txt) => async (ctx) => setResponseBody(ctx, txt)
 
 export default async (api) => {
   const initialDate = Date.now()
@@ -30,24 +37,17 @@ export default async (api) => {
     build: process.env.BUILD_NUMBER || 'development',
     date: new Date(initialDate),
   }
-  router.get('/health', async (ctx) => {
-    body.uptime = (Date.now() - initialDate) / 1000
-    setResponseBody(ctx, body)
-  })
 
-  router.get('/', async (ctx) => {
-    body.uptime = (Date.now() - initialDate) / 1000
-    setResponseBody(ctx, body)
-  })
-
-  router.get('/up', async (ctx) => {
-    setResponseBody(ctx, 'UP')
-  })
-  router.get('/ping', async (ctx) => {
-    setResponseBody(ctx, 'PONG')
-  })
+  router.get('/health', healthAction(body, initialDate))
+  router.get('/', healthAction(body, initialDate))
+  router.get('/up', stringAction('UP'))
+  router.get('/ping', stringAction('PONG'))
 
   return api.use(router.routes())
 }
 
-export { setResponseBody as __setResponseBody }
+export {
+  setResponseBody as __setResponseBody,
+  healthAction as __healthAction,
+  stringAction as __stringAction,
+}
