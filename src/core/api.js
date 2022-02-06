@@ -59,4 +59,4 @@ async function module(match, koa) {
 
 export default api
 
-export { core as _core, middleware as _middleware, module as _module }
+export { core as __core, middleware as __middleware, module as __module }
