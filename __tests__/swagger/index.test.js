@@ -1,15 +1,15 @@
 import swagger, { __options } from 'swagger'
-import openapiJSDoc from 'openapi-jsdoc'
+import swaggerJsdoc from 'swagger-jsdoc'
 
-jest.mock('openapi-jsdoc', () => jest.fn())
+jest.mock('swagger-jsdoc', () => jest.fn())
 
 test('swagger should be defined', () => {
   expect(swagger).toBeDefined()
 })
 
-test('swagger should call openapiJSDoc', async () => {
+test('swagger should call swaggerJsdoc', async () => {
   await swagger()
-  expect(openapiJSDoc).toHaveBeenCalled()
+  expect(swaggerJsdoc).toHaveBeenCalled()
 })
 
 test('swagger.options should return definitions and api', async () => {

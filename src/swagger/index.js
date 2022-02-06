@@ -1,5 +1,5 @@
 import path from 'path'
-import openapiJSDoc from 'openapi-jsdoc'
+import swaggerJsdoc from 'swagger-jsdoc'
 
 const pkginfo = require('../../package.json')
 
@@ -46,7 +46,7 @@ async function options() {
 }
 
 export default async () => {
-  return openapiJSDoc(await options())
+  return swaggerJsdoc(await options())
 }
 
 export { options as __options }

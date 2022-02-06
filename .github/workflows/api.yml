@@ -35,5 +35,8 @@ jobs:
         cache: 'yarn'
     - run: yarn
     - run: yarn test:coverage
-    - run: yarn codacy:send --token ${{ secrets.CODACY_PROJECT_TOKEN }}
+    - name: Enviar codacy-coverage-reporter
+      uses: codacy/codacy-coverage-reporter-action@v1
+      with:
+        project-token: ${{ secrets.CODACY_PROJECT_TOKEN }}
 
