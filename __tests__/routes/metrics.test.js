@@ -14,15 +14,6 @@ test('routes: metrics should be defined', () => {
   expect(metrics).toBeDefined()
 })
 
-test('routes: default should create a new route', async () => {
-  const api = {
-    use: jest.fn(),
-  }
-  await metrics(api)
-  expect(api.use).toHaveBeenCalled()
-  expect(koaRouter).toHaveBeenCalled()
-})
-
 test('routes: action should call client.register.metrics', async () => {
   const ctx = {}
   await __action(ctx)

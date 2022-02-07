@@ -1,5 +1,4 @@
 import path from 'path'
-import Router from 'koa-router'
 import send from 'koa-send'
 
 const getSendAction = (pathFiles = '') => {
@@ -11,13 +10,17 @@ const getSendAction = (pathFiles = '') => {
     })
 }
 
-export default async (api) => {
-  const staticRouter = new Router()
-  staticRouter.get('/public/(.*)', getSendAction())
-
-  staticRouter.get('/favicon.ico', getSendAction('/favicon.ico'))
-
-  return api.use(staticRouter.routes())
-}
+export default [
+  {
+    method: 'GET',
+    route: '/public/(.*)',
+    handlers: [getSendAction()],
+  },
+  {
+    method: 'GET',
+    route: '/favicon.ico',
+    handlers: [getSendAction('/favicon.ico')],
+  },
+]
 
 export { getSendAction as __getSendAction }

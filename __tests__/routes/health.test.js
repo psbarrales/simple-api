@@ -12,15 +12,6 @@ test('routes: health should be defined', () => {
   expect(health).toBeDefined()
 })
 
-test('routes: default should create a new route', async () => {
-  const api = {
-    use: jest.fn(),
-  }
-  await health(api)
-  expect(api.use).toHaveBeenCalled()
-  expect(koaRouter).toHaveBeenCalled()
-})
-
 test('routes: health healthAction should return a function', () => {
   const action = __healthAction()
   expect(action).toBeDefined()

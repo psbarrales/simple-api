@@ -16,34 +16,15 @@ const api = async () => {
 
 async function core(koa) {
   console.debug('[core] starting require module')
-  const matches = await new Promise((resolve, reject) => {
-    glob(
-      `${__dirname}/*`,
-      {
-        ignore: [
-          '**/index.js',
-          '**/api.js',
-          '**/*.ignore.js',
-          '**/*.require.js',
-        ],
-      },
-      (err, matches) => {
-        if (err) reject(err)
-        else resolve(matches)
-      },
-    )
+  const matches = glob.sync(`${__dirname}/*`, {
+    ignore: ['**/index.js', '**/api.js', '**/*.ignore.js', '**/*.require.js'],
   })
   return Promise.all(matches.map(async (match) => module(match, koa)))
 }
 
 async function middleware(koa) {
   console.debug('[middleware] starting require module')
-  const matches = await new Promise((resolve, reject) => {
-    glob(`${__dirname}/../middleware/**.require.js`, {}, (err, matches) => {
-      if (err) reject(err)
-      else resolve(matches)
-    })
-  })
+  const matches = glob.sync(`${__dirname}/../middleware/**.onload.js`, {})
   return Promise.all(matches.map(async (match) => module(match, koa)))
 }
 

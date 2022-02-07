@@ -9,15 +9,6 @@ test('routes: public should be defined', () => {
   expect(publicRoute).toBeDefined()
 })
 
-test('routes: default should create a new route', async () => {
-  const api = {
-    use: jest.fn(),
-  }
-  await publicRoute(api)
-  expect(api.use).toHaveBeenCalled()
-  expect(koaRouter).toHaveBeenCalled()
-})
-
 test('routes: public getSendAction should return a function', () => {
   const action = __getSendAction()
   expect(action).toBeDefined()
