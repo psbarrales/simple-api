@@ -21,7 +21,9 @@ docker
     ├── core               # core build with Koa.JS and 3rd party middleware
     ├── middleware         # custom middleware
     ├── models             # models for database
+    ├── public             # Public folder
     ├── routes             # Auto discovery routes folder
+    ├── swagger            # Swagger definitions
     ├── utils              # Utility functions
     ├── views              # Nunjunks template folders
     └── README.md
@@ -74,7 +76,7 @@ export default {
 Generate a route `GET` http://localhost:3000/products/
 
 ## Status endpoints
-*  `/health`: Get node metrics for prometheus tools
+*  `/health`: Get uptime and status of api
 *  `/metrics`: Get node metrics for prometheus tools
 *  `/up`: Return UP text
 *  `/ping`: Return PONG text
