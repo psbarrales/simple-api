@@ -1,5 +1,6 @@
 /* eslint-disable node/no-path-concat */
 import Koa from 'koa'
+import queue from 'queue'
 import glob from 'glob'
 import query from 'koa-qs'
 
@@ -19,7 +20,12 @@ async function core(koa) {
   const matches = glob.sync(`${__dirname}/*`, {
     ignore: ['**/index.js', '**/api.js', '**/*.ignore.js', '**/*.require.js'],
   })
-  return Promise.all(matches.map(async (match) => module(match, koa)))
+  const q = queue({
+    concurrency: 1,
+  })
+  matches.forEach((match) => q.push(async () => module(match, koa)))
+  q.start()
+  // return Promise.all(matches.map(async (match) => module(match, koa)))
 }
 
 async function middleware(koa) {

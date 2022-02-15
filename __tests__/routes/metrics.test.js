@@ -1,7 +1,7 @@
 import metrics, { __action } from 'routes/metrics'
-import koaRouter from 'koa-router'
+import koaRouter from '@koa/router'
 
-jest.mock('koa-router')
+jest.mock('@koa/router')
 jest.mock('utils/metrics', () => ({
   client: {
     register: {

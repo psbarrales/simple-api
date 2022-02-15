@@ -1,12 +1,12 @@
 import fs from 'fs'
 import path from 'path'
 import glob from 'glob'
-import Router from 'koa-router'
+import Router from '@koa/router'
 
 const SRC_PATH = `${process.cwd()}/src`
 const ROUTES_PATH = '/routes'
 
-async function run(koa) {
+const run = async (koa) => {
   console.debug('[core] routes: starting autodiscovery on routes/*')
   const router = new Router()
   createDirectoryRoutes(`${SRC_PATH}${ROUTES_PATH}`, router)
@@ -25,7 +25,8 @@ const createDirectoryRoutes = (directory, router) => {
       createDirectoryRoutes(match, routerDir)
       return router.use(routerDir.routes()).use(routerDir.allowedMethods())
     } else {
-      return createFileRoute(match, router)
+      createFileRoute(match, router)
+      // router.use(route.routes()).use(route.allowedMethods())
     }
   })
 }
@@ -47,6 +48,7 @@ const createFileRoute = (file, router) => {
         `${file}: Bad router definition method, route and handlers must to be defined`,
       )
     }
+    // handlers.unshift(body())
     const lastHandler = handlers.pop()
     router[method.toLowerCase()](
       route,
@@ -54,6 +56,7 @@ const createFileRoute = (file, router) => {
       async (ctx) => await lastHandler(ctx),
     )
   })
+  return router
 }
 
 export default {

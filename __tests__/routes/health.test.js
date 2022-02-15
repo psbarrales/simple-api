@@ -3,9 +3,9 @@ import health, {
   __setResponseBody,
   __stringAction,
 } from 'routes/health'
-import koaRouter from 'koa-router'
+import koaRouter from '@koa/router'
 
-jest.mock('koa-router')
+jest.mock('@koa/router')
 jest.mock('koa-send', () => jest.fn())
 
 test('routes: health should be defined', () => {

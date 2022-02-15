@@ -1,8 +1,8 @@
 import publicRoute, { __getSendAction } from 'routes/public'
-import koaRouter from 'koa-router'
+import koaRouter from '@koa/router'
 import koaSend from 'koa-send'
 
-jest.mock('koa-router')
+jest.mock('@koa/router')
 jest.mock('koa-send', () => jest.fn())
 
 test('routes: public should be defined', () => {

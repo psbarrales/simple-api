@@ -14,5 +14,7 @@ RUN apk update && apk add --no-cache openssl nodejs npm yarn \
   && yarn \
   && yarn cache clean
 
+# Adding SSL
+RUN ["./docker/create-certificate.sh"]
 # Running the app
 ENTRYPOINT [ "./docker/entrypoint.sh" ]

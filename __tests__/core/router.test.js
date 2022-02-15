@@ -1,10 +1,10 @@
 import router, { __createFileRoute, __createDirectoryRoutes } from 'core/router'
 import sinon from 'sinon'
 import Koa from 'koa'
-import Router from 'koa-router'
+import Router from '@koa/router'
 
 jest.mock('koa')
-// jest.mock('koa-router')
+// jest.mock('@koa/router')
 jest.mock('fakeRoute')
 
 test('core: router and router.run should be defined', () => {
@@ -78,7 +78,7 @@ describe('core: router: createFileRoute', () => {
         handlers: [() => {}],
       },
     })
-    jest.mock('koa-router', () => {
+    jest.mock('@koa/router', () => {
       return jest.fn().mockImplementation(() => {
         return { get: mockGet }
       })
@@ -107,7 +107,7 @@ describe('core: router: createDirectoryRoutes', () => {
     const isDirectory = sinon.stub()
     isDirectory.onCall(0).returns(true)
     isDirectory.onCall(1).returns(false)
-    jest.unmock('koa-router')
+    jest.unmock('@koa/router')
     jest.setMock('fs', {
       lstatSync: () => ({
         isDirectory: () => {
